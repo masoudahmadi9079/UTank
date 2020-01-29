@@ -3,11 +3,11 @@ package Data;
 import java.awt.*;
 
 public class Tank extends MovingThing {
-    final static int RADIUS = 25;
-    final static int GUN_LENGTH = 30;
+    private final static int RADIUS = 25;
+    private final static int GUN_LENGTH = 30;
 
     Tank(int x, int y, double direction) {
-        super(x, y, direction, 2f, 0.6f);
+        super(x, y, direction, 2f, 0.3f);
     }
 
     public void draw(Graphics graphics) {
@@ -20,7 +20,7 @@ public class Tank extends MovingThing {
         graphics.drawLine(this.x, this.y, this.getGunX(), this.getGunY());
     }
 
-    public boolean isShot(Shot shot) {
+    boolean isShot(Shot shot) {
         return (shot.x < this.x + RADIUS && shot.x > this.x - RADIUS) || (shot.y < this.y + RADIUS && shot.y > this.y - RADIUS);
     }
 
@@ -28,12 +28,12 @@ public class Tank extends MovingThing {
         return RADIUS;
     }
 
-    public double getDirection() {
+    double getDirection() {
         return this.direction;
     }
 
     int getGunX() {
-        return (int) Math.round(this.x + (Tank.GUN_LENGTH * Math.sin(this.direction)));
+        return (int) Math.round(this.x + (Tank.GUN_LENGTH * Math.cos(this.direction)));
     }
 
     int getGunY() {

@@ -1,6 +1,7 @@
 package Data;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,19 +17,19 @@ public class Game extends JFrame {
     Game() {
         this.setSize(Game.WIDTH, Game.HEIGHT);
 
-        Wall leftEdge = new Wall(20, 20, Game.HEIGHT, true);
+        Wall leftEdge = new Wall(10, 30, Game.HEIGHT - 43, true);
         this.everyThing.add(leftEdge);
         this.walls.add(leftEdge);
 
-        Wall topEdge = new Wall(20, 20, Game.WIDTH, false);
+        Wall topEdge = new Wall(10, 30, Game.WIDTH - 23, false);
         this.everyThing.add(topEdge);
         this.walls.add(leftEdge);
 
-        Wall bottomEdge = new Wall(20, 480, Game.WIDTH, false);
+        Wall bottomEdge = new Wall(10, 487, Game.WIDTH - 23, false);
         this.everyThing.add(bottomEdge);
         this.walls.add(bottomEdge);
 
-        Wall rightEdge = new Wall(480, 20, Game.WIDTH, true);
+        Wall rightEdge = new Wall(487, 30, Game.HEIGHT - 39, true);
         this.everyThing.add(rightEdge);
         this.everyThing.add(rightEdge);
 
@@ -93,8 +94,14 @@ public class Game extends JFrame {
             this.shotsInTheAir.add(new Shot(p2Tank.getGunX(), p2Tank.getGunY(), p2Tank.getDirection()));
         }
         if (listener.escape) {
-            
+            setVisible(false);
+            dispose();
         }
+    }
+    public void paint(Graphics graphics) {
+        super.paint(graphics);
+        this.everyThing.forEach(thing -> thing.draw(graphics));
+        Toolkit.getDefaultToolkit().sync();
     }
 
 }

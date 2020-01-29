@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc6d9475-5967-4ed8-a70d-4ad441b1b160" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/MovingThing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/MovingThing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Shot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Shot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Tank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Wall.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

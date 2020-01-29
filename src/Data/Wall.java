@@ -3,12 +3,12 @@ package Data;
 import java.awt.*;
 
 public class Wall extends Thing {
-    final static int WIDTH = 1;
+    private final static int WIDTH = 4;
 
-    int i1, i2, j;
+    private int i1, i2, j;
     boolean isVertical;
 
-    public Wall(int x, int y, int length, boolean isVertical) {
+    Wall(int x, int y, int length, boolean isVertical) {
         super(x,y);
         this.isVertical = isVertical;
         if (isVertical) {
@@ -28,11 +28,11 @@ public class Wall extends Thing {
         graphics.fillRect(this.getX(), this.getY(), width, height);
     }
 
-    int getX() {
+    private int getX() {
         return this.x;
     }
 
-    int getY() {
+    private int getY() {
         return this.y;
     }
 
