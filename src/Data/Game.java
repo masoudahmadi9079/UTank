@@ -3,7 +3,7 @@ package Data;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
-//fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff//
+
 public class Game extends JFrame {
     final static int WIDTH = 500, HEIGHT = 500;
 
@@ -93,7 +93,7 @@ public class Game extends JFrame {
             this.shotsInTheAir.add(new Shot(p2Tank.getGunX(), p2Tank.getGunY(), p2Tank.getDirection()));
         }
         if (listener.escape) {
-
+            
         }
     }
 
