@@ -80,6 +80,7 @@ public class Game extends JFrame {
         }
         if (listener.p1Fire) {
             this.shotsInTheAir.add(new Shot(p1Tank.getGunX(), p1Tank.getGunY(), p1Tank.getDirection()));
+            listener.p1Fire = false;
         }
         if (listener.p2Move && this.walls.stream().noneMatch(wall -> wall.contacts(p2Tank))) {
             p2Tank.step();
@@ -92,6 +93,7 @@ public class Game extends JFrame {
         }
         if (listener.p2Fire) {
             this.shotsInTheAir.add(new Shot(p2Tank.getGunX(), p2Tank.getGunY(), p2Tank.getDirection()));
+            listener.p2Fire = false;
         }
         if (listener.escape) {
             setVisible(false);
