@@ -101,6 +101,7 @@ public class Game extends JFrame {
     public void paint(Graphics graphics) {
         super.paint(graphics);
         this.everyThing.forEach(thing -> thing.draw(graphics));
+        this.shotsInTheAir.forEach(s -> s.draw(graphics));
         Toolkit.getDefaultToolkit().sync();
     }
 
