@@ -21,7 +21,7 @@ public class Tank extends MovingThing {
     }
 
     boolean isShot(Shot shot) {
-        return (shot.x < this.x + RADIUS && shot.x > this.x - RADIUS) || (shot.y < this.y + RADIUS && shot.y > this.y - RADIUS);
+        return (shot.x < this.x + RADIUS && shot.x > this.x - RADIUS) && (shot.y < this.y + RADIUS && shot.y > this.y - RADIUS);
     }
 
     public int getRadius() {
