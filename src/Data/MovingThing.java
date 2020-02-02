@@ -17,11 +17,11 @@ public abstract class MovingThing extends Thing {
     }
 
     public void turnLeft() {
-        this.changeDirection(this.angularVelocity);
+        this.changeDirection(-this.angularVelocity);
     }
 
     public void turnRight() {
-        this.changeDirection(-this.angularVelocity);
+        this.changeDirection(this.angularVelocity);
     }
 
     void step() {
