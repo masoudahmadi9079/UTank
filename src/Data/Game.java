@@ -48,14 +48,10 @@ public class Game extends JFrame {
         for (Shot shot : this.shotsInTheAir) {
             for (Wall wall : this.walls) {
                 if (wall.contacts(shot)) {
-
-                    System.err.println(shot.direction);  // Todo: test
-
                     shot.bounceAgainst(wall);
-                } else {
-                    shot.step();
                 }
             }
+            shot.step();
             if (p1Tank.isShot(shot)) {
                 this.everyThing.remove(p1Tank);
                 player1.respawn();
@@ -85,6 +81,7 @@ public class Game extends JFrame {
         if (listener.p1Fire) {
             this.shotsInTheAir.add(new Shot(p1Tank.getGunX(), p1Tank.getGunY(), p1Tank.getDirection()));
             listener.p1Fire = false;
+            System.err.println(p1Tank.getDirection());
         }
         if (listener.p2Move && this.walls.stream().noneMatch(wall -> wall.contacts(p2Tank))) {
             p2Tank.step();
