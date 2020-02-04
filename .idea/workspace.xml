@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc6d9475-5967-4ed8-a70d-4ad441b1b160" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Game.java" afterDir="false" />
@@ -9,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/src/Data/MovingThing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/MovingThing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Shot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Shot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Tank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Thing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Thing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Wall.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580309953721</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="0.0.1">
+      <created>1580326907261</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1580326907261</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,7 +104,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -104,6 +115,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="tese" />
     <MESSAGE value="tese1" />
-    <option name="LAST_COMMIT_MESSAGE" value="tese1" />
+    <MESSAGE value="0.0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.0.1" />
   </component>
 </project>

@@ -1,9 +1,7 @@
 package Data;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+
 
 public class Main {
 
@@ -13,6 +11,6 @@ public class Main {
         game.addKeyListener(new GameActionListener());
         game.setVisible(true);
 
-        new Timer(10, actionEvent -> { game.updateState();game.repaint();}).start();;
+        new Timer(10, actionEvent -> { game.updateState(); game.repaint();}).start();
     }
 }

@@ -3,14 +3,17 @@ package Data;
 import java.awt.*;
 
 public class Wall extends Thing {
-    private final static int WIDTH = 4;
+    final static int WIDTH = 2;
 
-    private int i1, i2, j;
+    private int i1, i2;
+    int j;
+    int length;
     boolean isVertical;
 
-    Wall(int x, int y, int length, boolean isVertical) {
+    public Wall(int x, int y, int length, boolean isVertical) {
         super(x,y);
         this.isVertical = isVertical;
+        this.length = length;
         if (isVertical) {
             this.i1 = y;
             this.i2 = y + length;
@@ -35,6 +38,8 @@ public class Wall extends Thing {
     private int getY() {
         return this.y;
     }
+
+
 
     boolean contacts(MovingThing moving) {
         int mI = (this.isVertical)? moving.getY() : moving.getX();

@@ -3,7 +3,7 @@ package Data;
 import java.awt.*;
 
 public class Shot extends MovingThing{
-    private final static int RADIUS = 10;
+    private final static int RADIUS = 5;
     private final static int LIFE = 100;
 
     private int age = Shot.LIFE;
@@ -12,8 +12,12 @@ public class Shot extends MovingThing{
         super(x, y, direction, 3 , 0);
     }
 
-    void draw(Graphics graphics) {
+    public void draw(Graphics graphics) {
         graphics.fillOval(this.x - Shot.RADIUS, this.y - Shot.RADIUS, Shot.RADIUS * 2, Shot.RADIUS * 2);
+    }
+
+    boolean contacts(Thing thing) {
+        return calculateDistance(thing) < getRadius();
     }
 
     void growOld() {
@@ -24,9 +28,8 @@ public class Shot extends MovingThing{
         return this.age <= 0;
     }
 
-    void bounceAgainst(Wall wall) {
-        this.direction = (wall.isVertical? 0 : Math.PI) - this.direction;
-    }
+    void bounceAgainst(Wall wall) { this.direction = ((wall.isVertical? Math.PI : 0) - this.direction); }
+
     public int getRadius() {
         return RADIUS;
     }

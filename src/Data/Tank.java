@@ -20,8 +20,17 @@ public class Tank extends MovingThing {
         graphics.drawLine(this.x, this.y, this.getGunX(), this.getGunY());
     }
 
+    Shot shot() {
+        return new Shot(this.getGunX(), this.getGunY(), this.direction);
+    }
+
+    /*boolean isShot(Shot shot) {
+        return (shot.x < this.x + RADIUS && shot.x > this.x - RADIUS) && (shot.y < this.y + RADIUS && shot.y > this.y - RADIUS);
+    }*/
+
+
     boolean isShot(Shot shot) {
-        return (shot.x < this.x + RADIUS && shot.x > this.x - RADIUS) || (shot.y < this.y + RADIUS && shot.y > this.y - RADIUS);
+        return calculateDistance(shot) < getRadius() + shot.getRadius();
     }
 
     public int getRadius() {

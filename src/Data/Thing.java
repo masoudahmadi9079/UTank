@@ -2,7 +2,7 @@ package Data;
 
 import java.awt.*;
 
-public abstract class Thing {
+abstract class Thing {
     int x;
     int y;
 
@@ -10,6 +10,11 @@ public abstract class Thing {
         this.x = x;
         this.y = y;
     }
+
+    double calculateDistance(Thing thing) {
+        return (Math.sqrt((this.x - thing.x)*(this.x - thing.x)) + ((this.y - thing.y)*(this.y - thing.y)));
+    }
+
 
     abstract void draw(Graphics graphics);
 }
