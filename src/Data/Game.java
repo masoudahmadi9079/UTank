@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game extends JFrame {
-    public final static int WIDTH = 500, HEIGHT = 500;
+    final static int WIDTH = 500, HEIGHT = 500;
 
     List<Thing> everyThing = new ArrayList<>();
     List<Wall> walls = new ArrayList<>();
@@ -17,12 +17,24 @@ public class Game extends JFrame {
     Game() {
         this.setSize(Game.WIDTH, Game.HEIGHT);
 
-        Map map = new Map(Map.mapLoader.x1);
-        this.walls.addAll(map.walls);
-        this.everyThing.addAll(map.walls);
+        Wall leftEdge = new Wall(10, 30, Game.HEIGHT - 43, true);
+        this.everyThing.add(leftEdge);
+        this.walls.add(leftEdge);
 
-        this.player1.newRound(false, (int) (Math.random() * (Game.WIDTH - 60) + 50), (int) (Math.random() * (Game.HEIGHT - 60) + 50));
-        this.player2.newRound(false, (int) (Math.random() * (Game.WIDTH - 60) + 50), (int) (Math.random() * (Game.HEIGHT - 60) + 50));
+        Wall topEdge = new Wall(10, 30, Game.WIDTH - 23, false);
+        this.everyThing.add(topEdge);
+        this.walls.add(leftEdge);
+
+        Wall bottomEdge = new Wall(10, 487, Game.WIDTH - 23, false);
+        this.everyThing.add(bottomEdge);
+        this.walls.add(bottomEdge);
+
+        Wall rightEdge = new Wall(487, 30, Game.HEIGHT - 39, true);
+        this.everyThing.add(rightEdge);
+        this.everyThing.add(rightEdge);
+
+        this.player1.newRound(false, (int) (Math.random() * Game.WIDTH), (int) (Math.random() * Game.HEIGHT));
+        this.player2.newRound(false, (int) (Math.random() * Game.WIDTH), (int) (Math.random() * Game.HEIGHT));
 
         this.everyThing.add(player1.getTank());
         this.everyThing.add(player2.getTank());
@@ -36,8 +48,9 @@ public class Game extends JFrame {
             for (Wall wall : this.walls) {
                 if (wall.contacts(shot)) {
                     shot.bounceAgainst(wall);
+                } else {
+                    shot.step();
                 }
-                shot.step();
             }
             if (p1Tank.isShot(shot)) {
                 this.everyThing.remove(p1Tank);
@@ -56,20 +69,9 @@ public class Game extends JFrame {
 
         GameActionListener listener = (GameActionListener) this.getKeyListeners()[0];
 
-        if (listener.p1Move) {
-            for (Wall wall : walls) {
-                if (p1Tank.contacts(wall)) {
-                    System.out.println("ffffffffff");
-                    p1Tank.blockedBy(wall);
-                }
-            }
+        if (listener.p1Move && this.walls.stream().noneMatch(wall -> wall.contacts(p1Tank))) {
             p1Tank.step();
-            if (contacts(p1Tank, p2Tank)) {
-                p1Tank.stepBack();
-                //p2Tank.stepBack();
-            }
         }
-
         if (listener.p1Left) {
             p1Tank.turnLeft();
         }
@@ -77,60 +79,29 @@ public class Game extends JFrame {
             p1Tank.turnRight();
         }
         if (listener.p1Fire) {
-            Shot shot = p1Tank.shot();
-            shotsInTheAir.add(shot);
-            everyThing.add(shot);
-            listener.p1Fire = false;
+            this.shotsInTheAir.add(new Shot(p1Tank.getGunX(), p1Tank.getGunY(), p1Tank.getDirection()));
         }
-
-        if (listener.p2Move) {
-            for (Wall wall : walls) {
-               // System.out.println(wall.contacts(p2Tank));
-                if (wall.contacts(p2Tank)) {
-                    p2Tank.blockedBy(wall);
-                    break;
-                }
-            }
+        if (listener.p2Move && this.walls.stream().noneMatch(wall -> wall.contacts(p2Tank))) {
             p2Tank.step();
-            if (contacts(p1Tank, p2Tank)) {
-                //p1Tank.stepBack();
-                p2Tank.stepBack();
-            }
         }
-
         if (listener.p2Left) {
             p2Tank.turnLeft();
         }
         if (listener.p2Right) {
             p2Tank.turnRight();
         }
-
         if (listener.p2Fire) {
-            Shot shot = p2Tank.shot();
-            shotsInTheAir.add(shot);
-            everyThing.add(shot);
-            listener.p2Fire = false;
+            this.shotsInTheAir.add(new Shot(p2Tank.getGunX(), p2Tank.getGunY(), p2Tank.getDirection()));
         }
         if (listener.escape) {
             setVisible(false);
             dispose();
         }
-
-        //System.out.println(contacts(p1Tank, p2Tank));
-
     }
-    boolean contacts(MovingThing moving1, MovingThing moving2) {
-        int delta_x = moving1.x - moving2.x;
-        int delta_y = moving1.y - moving2.y;
-        double distance = Math.sqrt(delta_x * delta_x + delta_y * delta_y);
-        return distance < moving1.getRadius() + moving2.getRadius();
+    public void paint(Graphics graphics) {
+        super.paint(graphics);
+        this.everyThing.forEach(thing -> thing.draw(graphics));
+        Toolkit.getDefaultToolkit().sync();
     }
 
-        public void paint (Graphics graphics){
-            super.paint(graphics);
-            this.everyThing.forEach(thing -> thing.draw(graphics));
-            // this.shotsInTheAir.forEach(thing -> thing.draw(graphics));
-            Toolkit.getDefaultToolkit().sync();
-        }
-
-    }
+}
