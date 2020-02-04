@@ -4,12 +4,15 @@ public class Player {
     private Tank tank;
     private int points = 0;
 
-    void newRound(boolean hasWon, int startX, int startY) {
-        if (hasWon) {
-            this.points++;
-        } else {
-            this.tank = new Tank(startX, startY, 0);
-        }
+    void respawn(){
+        this.tank = new Tank(
+                (int) ((Math.random() * (Game.WIDTH - (Game.OFFSET*2))) + Game.OFFSET),
+                (int) ((Math.random() * (Game.HEIGHT - (Game.OFFSET*2))) + Game.OFFSET),
+                0);
+    }
+
+    void addPoint(){
+        this.points++;
     }
 
     Tank getTank() {

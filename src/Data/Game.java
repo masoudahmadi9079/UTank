@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Game extends JFrame {
     final static int WIDTH = 500, HEIGHT = 500;
+    final static int OFFSET = 20;
 
     List<Thing> everyThing = new ArrayList<>();
     List<Wall> walls = new ArrayList<>();
@@ -17,24 +18,24 @@ public class Game extends JFrame {
     Game() {
         this.setSize(Game.WIDTH, Game.HEIGHT);
 
-        Wall leftEdge = new Wall(10, 30, Game.HEIGHT - 43, true);
+        Wall leftEdge = new Wall(Game.OFFSET, Game.OFFSET, Game.HEIGHT - (Game.OFFSET*2), true);
         this.everyThing.add(leftEdge);
         this.walls.add(leftEdge);
 
-        Wall topEdge = new Wall(10, 30, Game.WIDTH - 23, false);
+        Wall topEdge = new Wall(Game.OFFSET, Game.OFFSET, Game.WIDTH - (Game.OFFSET*2), false);
         this.everyThing.add(topEdge);
-        this.walls.add(leftEdge);
+        this.walls.add(topEdge);
 
-        Wall bottomEdge = new Wall(10, 487, Game.WIDTH - 23, false);
+        Wall bottomEdge = new Wall(Game.OFFSET, Game.HEIGHT - Game.OFFSET, Game.WIDTH - (Game.OFFSET*2), false);
         this.everyThing.add(bottomEdge);
         this.walls.add(bottomEdge);
 
-        Wall rightEdge = new Wall(487, 30, Game.HEIGHT - 39, true);
+        Wall rightEdge = new Wall(Game.WIDTH - Game.OFFSET, Game.OFFSET, Game.HEIGHT - (Game.OFFSET*2), true);
         this.everyThing.add(rightEdge);
-        this.everyThing.add(rightEdge);
+        this.walls.add(rightEdge);
 
-        this.player1.newRound(false, (int) (Math.random() * Game.WIDTH), (int) (Math.random() * Game.HEIGHT));
-        this.player2.newRound(false, (int) (Math.random() * Game.WIDTH), (int) (Math.random() * Game.HEIGHT));
+        this.player1.respawn();
+        this.player2.respawn();
 
         this.everyThing.add(player1.getTank());
         this.everyThing.add(player2.getTank());
@@ -47,6 +48,9 @@ public class Game extends JFrame {
         for (Shot shot : this.shotsInTheAir) {
             for (Wall wall : this.walls) {
                 if (wall.contacts(shot)) {
+
+                    System.err.println(shot.direction);  // Todo: test
+
                     shot.bounceAgainst(wall);
                 } else {
                     shot.step();
@@ -54,13 +58,13 @@ public class Game extends JFrame {
             }
             if (p1Tank.isShot(shot)) {
                 this.everyThing.remove(p1Tank);
-                player1.newRound(false, (int) (Math.random() * Game.WIDTH), (int) (Math.random() * Game.HEIGHT));
-                player2.newRound(true, (int) (Math.random() * Game.WIDTH), (int) (Math.random() * Game.HEIGHT));
+                player1.respawn();
+                player2.addPoint();
             }
             if (p2Tank.isShot(shot)) {
                 this.everyThing.remove(p2Tank);
-                player1.newRound(true, (int) (Math.random() * Game.WIDTH), (int) (Math.random() * Game.HEIGHT));
-                player2.newRound(false, (int) (Math.random() * Game.WIDTH), (int) (Math.random() * Game.HEIGHT));
+                player1.addPoint();
+                player2.respawn();
             }
         }
 

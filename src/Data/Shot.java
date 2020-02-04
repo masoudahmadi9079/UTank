@@ -13,7 +13,9 @@ public class Shot extends MovingThing{
     }
 
     void draw(Graphics graphics) {
+        graphics.setColor(Color.red);
         graphics.fillOval(this.x - Shot.RADIUS, this.y - Shot.RADIUS, Shot.RADIUS * 2, Shot.RADIUS * 2);
+
     }
 
     void growOld() {
@@ -30,4 +32,5 @@ public class Shot extends MovingThing{
     public int getRadius() {
         return RADIUS;
     }
+
 }

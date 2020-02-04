@@ -3,7 +3,7 @@ package Data;
 import java.awt.*;
 
 public class Wall extends Thing {
-    private final static int WIDTH = 4;
+    private final static int WIDTH = 1;
 
     private int i1, i2, j;
     boolean isVertical;

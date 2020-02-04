@@ -10,6 +10,9 @@ public class Main {
     public static void main(String[] args) {
 
         Game game = new Game();
+
+        game.setUndecorated(true); // removing title bar and the rest
+
         game.addKeyListener(new GameActionListener());
         game.setVisible(true);
 
