@@ -25,8 +25,8 @@ public abstract class MovingThing extends Thing {
     }
 
     void step() {
-        this.x += this.velocity * Math.cos(this.direction);
-        this.y += this.velocity * Math.sin(this.direction);
+        this.x += Math.round(this.velocity * Math.cos(this.direction));
+        this.y += Math.round(this.velocity * Math.sin(this.direction));
     }
 
     int getX() {
