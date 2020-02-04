@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dc6d9475-5967-4ed8-a70d-4ad441b1b160" name="Default Changelist" comment="">
+    <list default="true" id="dc6d9475-5967-4ed8-a70d-4ad441b1b160" name="Default Changelist" comment="changed the whole wall and contact system">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Game.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/GameActionListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/MovingThing.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Player.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Shot.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Tank.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Thing.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/MovingThing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/MovingThing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Shot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Shot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Tank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Wall.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,12 +36,20 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="mt-changes" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1WtkbqQavdrJpS0cJphHgdWYjrr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -58,6 +76,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -87,7 +108,56 @@
       <option name="project" value="LOCAL" />
       <updated>1580309953721</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed directions and angularVelocity">
+      <created>1580661709252</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1580661709252</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed directions and angularVelocity">
+      <created>1580662022568</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1580662022568</updated>
+    </task>
+    <task id="LOCAL-00005" summary="minor changes">
+      <created>1580830248048</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1580830248048</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixed velocity and turn vilocity for secound time">
+      <created>1580832056686</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1580832056686</updated>
+    </task>
+    <task id="LOCAL-00007" summary="changed the whole wall and contact system">
+      <created>1580833142709</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1580833142709</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fixed the bounce against the wall system">
+      <created>1580836506518</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1580836506534</updated>
+    </task>
+    <task id="LOCAL-00009" summary="a little fix on step functionality">
+      <created>1580836903848</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1580836903848</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,7 +165,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -104,6 +176,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="tese" />
     <MESSAGE value="tese1" />
-    <option name="LAST_COMMIT_MESSAGE" value="tese1" />
+    <MESSAGE value="fixed directions and angularVelocity" />
+    <MESSAGE value="minor changes" />
+    <MESSAGE value="fixed velocity and turn vilocity for secound time" />
+    <MESSAGE value="changed the whole wall and contact system" />
+    <MESSAGE value="fixed the bounce against the wall system" />
+    <MESSAGE value="a little fix on step functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="a little fix on step functionality" />
   </component>
 </project>

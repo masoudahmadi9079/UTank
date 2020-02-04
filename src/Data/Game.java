@@ -14,37 +14,47 @@ public class Game extends JFrame {
     Player player1 = new Player();
     Player player2 = new Player();
     List<Shot> shotsInTheAir = new ArrayList<>();
+    Tank p1Tank;
+    Tank p2Tank;
+    JLabel scores;
 
     Game() {
         this.setSize(Game.WIDTH, Game.HEIGHT);
 
+        scores = new JLabel("Welcome!");
+        this.add(scores, BorderLayout.NORTH);
+
         Wall leftEdge = new Wall(Game.OFFSET, Game.OFFSET, Game.HEIGHT - (Game.OFFSET*2), true);
-        this.everyThing.add(leftEdge);
-        this.walls.add(leftEdge);
-
         Wall topEdge = new Wall(Game.OFFSET, Game.OFFSET, Game.WIDTH - (Game.OFFSET*2), false);
-        this.everyThing.add(topEdge);
-        this.walls.add(topEdge);
-
         Wall bottomEdge = new Wall(Game.OFFSET, Game.HEIGHT - Game.OFFSET, Game.WIDTH - (Game.OFFSET*2), false);
-        this.everyThing.add(bottomEdge);
-        this.walls.add(bottomEdge);
-
         Wall rightEdge = new Wall(Game.WIDTH - Game.OFFSET, Game.OFFSET, Game.HEIGHT - (Game.OFFSET*2), true);
-        this.everyThing.add(rightEdge);
-        this.walls.add(rightEdge);
+        Wall centerTop = new Wall(Game.WIDTH / 2, 100 , 110, true);
+        Wall centerBottom = new Wall(Game.WIDTH / 2, 290 , 110, true);
+        addWall(leftEdge);
+        addWall(topEdge);
+        addWall(bottomEdge);
+        addWall(rightEdge);
+        addWall(centerTop);
+        addWall(centerBottom);
 
-        this.player1.respawn();
-        this.player2.respawn();
+        p1Tank = player1.newTank();
+        p2Tank = player2.newTank();
 
-        this.everyThing.add(player1.getTank());
-        this.everyThing.add(player2.getTank());
+        this.everyThing.add(p1Tank);
+        this.everyThing.add(p2Tank);
+    }
+
+    private void updateScore(){
+        scores.setText("Player1 => " + player1.getPoints() + " *** Player2 => " + player2.getPoints());
+    }
+
+    private void addWall(Wall wall){
+        this.everyThing.add(wall);
+        this.walls.add(wall);
     }
 
     void updateState() {
-        Tank p1Tank = this.player1.getTank();
-        Tank p2Tank = this.player2.getTank();
-
+        // shots and walls contacts
         for (Shot shot : this.shotsInTheAir) {
             for (Wall wall : this.walls) {
                 if (wall.contacts(shot)) {
@@ -52,15 +62,21 @@ public class Game extends JFrame {
                 }
             }
             shot.step();
+
+            // shots and players contacts
             if (p1Tank.isShot(shot)) {
-                this.everyThing.remove(p1Tank);
-                player1.respawn();
                 player2.addPoint();
+                this.everyThing.remove(p1Tank);
+                p1Tank = player1.newTank();
+                this.everyThing.add(p1Tank);
+                updateScore();
             }
             if (p2Tank.isShot(shot)) {
-                this.everyThing.remove(p2Tank);
                 player1.addPoint();
-                player2.respawn();
+                this.everyThing.remove(p2Tank);
+                p2Tank = player2.newTank();
+                this.everyThing.add(p2Tank);
+                updateScore();
             }
         }
 
@@ -69,9 +85,40 @@ public class Game extends JFrame {
 
         GameActionListener listener = (GameActionListener) this.getKeyListeners()[0];
 
-        if (listener.p1Move && this.walls.stream().noneMatch(wall -> wall.contacts(p1Tank))) {
+        // players move
+        if (listener.p1Move) {
             p1Tank.step();
         }
+        if (listener.p2Move) {
+            p2Tank.step();
+        }
+
+        // player and walls contacts
+        for (Wall wall : this.walls){
+            double dir;
+            if (wall.contacts(p1Tank)){
+                dir = p1Tank.getDirection();
+                if (dir < 0){
+                    p1Tank.setDirection(Math.PI + dir);
+                }else{
+                    p1Tank.setDirection(-Math.PI + dir);
+                }
+                p1Tank.step();
+                p1Tank.setDirection(dir);
+            }
+            if (wall.contacts(p2Tank)){
+                dir = p2Tank.getDirection();
+                if (dir < 0){
+                    p2Tank.setDirection(Math.PI + dir);
+                }else{
+                    p2Tank.setDirection(-Math.PI + dir);
+                }
+                p2Tank.step();
+                p2Tank.setDirection(dir);
+            }
+        }
+
+        // players turning and fire
         if (listener.p1Left) {
             p1Tank.turnLeft();
         }
@@ -82,9 +129,6 @@ public class Game extends JFrame {
             this.shotsInTheAir.add(new Shot(p1Tank.getGunX(), p1Tank.getGunY(), p1Tank.getDirection()));
             listener.p1Fire = false;
             System.err.println(p1Tank.getDirection());
-        }
-        if (listener.p2Move && this.walls.stream().noneMatch(wall -> wall.contacts(p2Tank))) {
-            p2Tank.step();
         }
         if (listener.p2Left) {
             p2Tank.turnLeft();
@@ -101,11 +145,11 @@ public class Game extends JFrame {
             dispose();
         }
     }
+
     public void paint(Graphics graphics) {
         super.paint(graphics);
         this.everyThing.forEach(thing -> thing.draw(graphics));
         this.shotsInTheAir.forEach(s -> s.draw(graphics));
         Toolkit.getDefaultToolkit().sync();
     }
-
 }

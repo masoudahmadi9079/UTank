@@ -1,0 +1,56 @@
+[33mcommit 3e6e162db7980c67522942db67a00ce5216dffb7[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: a23919b d6cf2bc
+Author: masoudahmadi9079 <47570928+masoudahmadi9079@users.noreply.github.com>
+Date:   Fri Jan 31 14:27:08 2020 +0330
+
+    Merge pull request #1 from BelegCuthalion/master
+    
+    some fixes
+
+[33mcommit d6cf2bcf0764b6fca3ee450bb0c5e3b740960857[m
+Author: Alireza Mahmoudian <mahmoudian@aut.ac.ir>
+Date:   Thu Jan 30 13:54:50 2020 +0330
+
+    guns are semi-automatic
+
+[33mcommit ccc2fa27130ac9c30688bbe8ba85c01f57ad9e7a[m
+Author: Alireza Mahmoudian <mahmoudian@aut.ac.ir>
+Date:   Thu Jan 30 13:52:42 2020 +0330
+
+    shots must be drawn too
+
+[33mcommit 66277282645e38fd761b4beb3b473bec82545838[m
+Author: Alireza Mahmoudian <mahmoudian@aut.ac.ir>
+Date:   Thu Jan 30 13:51:11 2020 +0330
+
+    corrected isShot logic
+
+[33mcommit a23919bd5b34aa6ba67744e4d2b9d65d598238d3[m
+Author: Masoud <mohammad.ahmadi9079@yahoo.com>
+Date:   Wed Jan 29 23:11:47 2020 +0330
+
+    0.0.1
+
+[33mcommit 5602d21c06fa655b1b80a20bfd2391d087059b53[m
+Author: Masoud <mohammad.ahmadi9079@yahoo.com>
+Date:   Wed Jan 29 18:37:50 2020 +0330
+
+    test
+
+[33mcommit e3083b44f95022d7807fa5148a442ce7d66f0fe9[m
+Author: Masoud <mohammad.ahmadi9079@yahoo.com>
+Date:   Wed Jan 29 18:29:13 2020 +0330
+
+    tese1
+
+[33mcommit dca211696e07737ef78a0f14a44f20f69f4a1684[m
+Author: Masoud <mohammad.ahmadi9079@yahoo.com>
+Date:   Wed Jan 29 18:26:56 2020 +0330
+
+    tese
+
+[33mcommit 09f940143f58ffa594e0746f6bbf7890764752b8[m
+Author: Masoud <mohammad.ahmadi9079@yahoo.com>
+Date:   Wed Jan 29 17:12:20 2020 +0330
+
+    initial commit

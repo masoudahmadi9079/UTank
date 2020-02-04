@@ -4,9 +4,11 @@ import java.awt.*;
 
 public class Shot extends MovingThing{
     private final static int RADIUS = 10;
-    private final static int LIFE = 200;
+    private final static int LIFE = 100;
 
     private int age = Shot.LIFE;
+
+    // todo: let the shots from a particular tank don't kill the tank itself
 
     Shot(int x, int y, double direction) {
         super(x, y, direction, 6 , 0);

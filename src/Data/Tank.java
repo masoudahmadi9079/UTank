@@ -3,7 +3,7 @@ package Data;
 import java.awt.*;
 
 public class Tank extends MovingThing {
-    private final static int RADIUS = 25;
+    public final static int RADIUS = 25;
     private final static int GUN_LENGTH = 30;
 
     Tank(int x, int y, double direction) {
@@ -31,6 +31,8 @@ public class Tank extends MovingThing {
     double getDirection() {
         return this.direction;
     }
+
+    void setDirection(double dir) { this.direction = dir; }
 
     int getGunX() {
         return (int) Math.round(this.x + (Tank.GUN_LENGTH * Math.cos(this.direction)));

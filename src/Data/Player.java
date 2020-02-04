@@ -4,10 +4,13 @@ public class Player {
     private Tank tank;
     private int points = 0;
 
-    void respawn(){
+    // todo: the tanks should not respawn in walls maybe???
+
+    // to handle respawn things
+    private void respawn(){
         this.tank = new Tank(
-                (int) ((Math.random() * (Game.WIDTH - (Game.OFFSET*2))) + Game.OFFSET),
-                (int) ((Math.random() * (Game.HEIGHT - (Game.OFFSET*2))) + Game.OFFSET),
+                (int) ((Math.random() * (Game.WIDTH - ((Game.OFFSET + Tank.RADIUS) *2) - 10)) + Game.OFFSET + Tank.RADIUS + 5),
+                (int) ((Math.random() * (Game.HEIGHT - ((Game.OFFSET + Tank.RADIUS) *2) - 10)) + Game.OFFSET + Tank.RADIUS + 5),
                 0);
     }
 
@@ -15,7 +18,9 @@ public class Player {
         this.points++;
     }
 
-    Tank getTank() {
+    // add a new tank
+    Tank newTank() {
+        this.respawn();
         return this.tank;
     }
 
