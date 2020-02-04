@@ -5,26 +5,22 @@ import java.awt.*;
 public class Wall extends Thing {
     private final static int WIDTH = 4;
 
-    private int i1, i2, j;
+    private int size;
     boolean isVertical;
 
-    Wall(int x, int y, int length, boolean isVertical) {
+    Wall(int x, int y, int size, boolean isVertical) {
         super(x,y);
         this.isVertical = isVertical;
         if (isVertical) {
-            this.i1 = y;
-            this.i2 = y + length;
-            this.j = x;
+            this.size = size;
         } else {
-            this.i1 = x;
-            this.i2 = x + length;
-            this.j = y;
+            this.size = size;
         }
     }
 
     public void draw(Graphics graphics) {
-        int width = (this.isVertical)? Wall.WIDTH : this.i2 - this.i1;
-        int height = (this.isVertical)? this.i2 - this.i1 : Wall.WIDTH;
+        int width = (this.isVertical)? Wall.WIDTH : size;
+        int height = (this.isVertical)? size : Wall.WIDTH;
         graphics.fillRect(this.getX(), this.getY(), width, height);
     }
 
@@ -37,19 +33,21 @@ public class Wall extends Thing {
     }
 
     boolean contacts(MovingThing moving) {
-        int mI = (this.isVertical)? moving.getY() : moving.getX();
-        int mJ = (this.isVertical)? moving.getX() : moving.getY();
 
-        int start = Math.min(this.i1, this.i2);
-        int end = Math.max(this.i1, this.i2);
+        // rewrite the contact system from scratch
 
-        int contactJ = mJ + ((this.j <= mJ)? -1 : 1) * moving.getRadius();
-
-        return (start <= mI + moving.getRadius() &&
-                mI - moving.getRadius() <= end &&
-                this.j - Wall.WIDTH <= contactJ &&
-                contactJ <= this.j + Wall.WIDTH
-        );
-
+        int radius = moving.getRadius();
+        if (isVertical){
+            if ((moving.getX() + radius >= this.x && moving.getX() - radius <= this.x + Wall.WIDTH) &&
+                    (moving.getY() + radius >= this.y && moving.getY() - radius <= this.y + +size)){
+                return true;
+            }
+        }else{
+            if ((moving.getX() + radius >= this.x && moving.getX() - radius <= this.x + size) &&
+                    (moving.getY() + radius >= this.y && moving.getY() - radius <= this.y + Wall.WIDTH)){
+                return true;
+            }
+        }
+        return false;
     }
 }
