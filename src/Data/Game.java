@@ -5,11 +5,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game extends JFrame {
-    final static int WIDTH = 500, HEIGHT = 500;
+public class Game extends Page {
     final static int OFFSET = 20;
 
-    List<Thing> everyThing = new ArrayList<>();
     List<Wall> walls = new ArrayList<>();
     Player player1 = new Player();
     Player player2 = new Player();
@@ -19,17 +17,15 @@ public class Game extends JFrame {
     JLabel scores;
 
     Game() {
-        this.setSize(Game.WIDTH, Game.HEIGHT);
-
         scores = new JLabel("Welcome!");
         this.add(scores, BorderLayout.NORTH);
 
-        Wall leftEdge = new Wall(Game.OFFSET, Game.OFFSET, Game.HEIGHT - (Game.OFFSET*2), true);
-        Wall topEdge = new Wall(Game.OFFSET, Game.OFFSET, Game.WIDTH - (Game.OFFSET*2), false);
-        Wall bottomEdge = new Wall(Game.OFFSET, Game.HEIGHT - Game.OFFSET, Game.WIDTH - (Game.OFFSET*2), false);
-        Wall rightEdge = new Wall(Game.WIDTH - Game.OFFSET, Game.OFFSET, Game.HEIGHT - (Game.OFFSET*2), true);
-        Wall centerTop = new Wall(Game.WIDTH / 2, 100 , 110, true);
-        Wall centerBottom = new Wall(Game.WIDTH / 2, 290 , 110, true);
+        Wall leftEdge = new Wall(Game.OFFSET, Game.OFFSET, Page.HEIGHT - (Game.OFFSET*2), true);
+        Wall topEdge = new Wall(Game.OFFSET, Game.OFFSET, Page.WIDTH - (Game.OFFSET*2), false);
+        Wall bottomEdge = new Wall(Game.OFFSET, Page.HEIGHT - Game.OFFSET, Page.WIDTH - (Game.OFFSET*2), false);
+        Wall rightEdge = new Wall(Page.WIDTH - Game.OFFSET, Game.OFFSET, Page.HEIGHT - (Game.OFFSET*2), true);
+        Wall centerTop = new Wall(Page.WIDTH / 2, Page.HEIGHT/5 , Page.HEIGHT/5, true);
+        Wall centerBottom = new Wall(Page.WIDTH / 2, Page.HEIGHT/5*3 , Page.HEIGHT/5, true);
         addWall(leftEdge);
         addWall(topEdge);
         addWall(bottomEdge);
@@ -141,14 +137,12 @@ public class Game extends JFrame {
             listener.p2Fire = false;
         }
         if (listener.escape) {
-            setVisible(false);
-            dispose();
+            PageHandler.changePage("menu");
         }
     }
 
     public void paint(Graphics graphics) {
         super.paint(graphics);
-        this.everyThing.forEach(thing -> thing.draw(graphics));
         this.shotsInTheAir.forEach(s -> s.draw(graphics));
         Toolkit.getDefaultToolkit().sync();
     }

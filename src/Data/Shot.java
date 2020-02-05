@@ -3,7 +3,7 @@ package Data;
 import java.awt.*;
 
 public class Shot extends MovingThing{
-    private final static int RADIUS = 10;
+    private final static int RADIUS = 5;
     private final static int LIFE = 100;
 
     private int age = Shot.LIFE;

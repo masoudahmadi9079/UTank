@@ -9,8 +9,8 @@ public class Player {
     // to handle respawn things
     private void respawn(){
         this.tank = new Tank(
-                (int) ((Math.random() * (Game.WIDTH - ((Game.OFFSET + Tank.RADIUS) *2) - 10)) + Game.OFFSET + Tank.RADIUS + 5),
-                (int) ((Math.random() * (Game.HEIGHT - ((Game.OFFSET + Tank.RADIUS) *2) - 10)) + Game.OFFSET + Tank.RADIUS + 5),
+                (int) ((Math.random() * (Page.WIDTH - ((Game.OFFSET + Tank.RADIUS) *2) - 10)) + Game.OFFSET + Tank.RADIUS + 5),
+                (int) ((Math.random() * (Page.HEIGHT - ((Game.OFFSET + Tank.RADIUS) *2) - 10)) + Game.OFFSET + Tank.RADIUS + 5),
                 0);
     }
 
