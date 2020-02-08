@@ -42,6 +42,8 @@ public class Game extends Page {
 
     private void updateScore(){
         scores.setText("Player1 => " + player1.getPoints() + " *** Player2 => " + player2.getPoints());
+        //JOptionPane.showMessageDialog(this, "Eggs are not supposed to be green.");
+        // todo: make the players win the game and show popup
     }
 
     private void addWall(Wall wall){
@@ -124,7 +126,6 @@ public class Game extends Page {
         if (listener.p1Fire) {
             this.shotsInTheAir.add(new Shot(p1Tank.getGunX(), p1Tank.getGunY(), p1Tank.getDirection()));
             listener.p1Fire = false;
-            System.err.println(p1Tank.getDirection());
         }
         if (listener.p2Left) {
             p2Tank.turnLeft();

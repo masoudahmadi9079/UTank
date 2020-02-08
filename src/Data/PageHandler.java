@@ -16,7 +16,14 @@ public class PageHandler {
         currentPage.setUndecorated(true);
         currentPage.setVisible(true);
 
-        timer = new Timer(10, actionEvent -> { currentPage.updateState(); currentPage.repaint();});;
+        setupTimer(50);
+    }
+
+    public static void setupTimer(int fps){
+        if (timer != null){
+            timer.stop();
+        }
+        timer = new Timer((int) (1000 / fps), actionEvent -> { currentPage.updateState(); currentPage.repaint();});;
         timer.start();
     }
 
@@ -32,9 +39,17 @@ public class PageHandler {
                 currentPage = new Game();
                 currentPage.addKeyListener(new GameActionListener());
                 break;
+            case "settings":
+                currentPage = new Settings();
+                currentPage.addKeyListener(new SettingsActionListener());
+                break;
         }
         currentPage.setUndecorated(true);
         currentPage.setVisible(true);
+    }
+
+    public static int getTimerDelay(){
+        return (int) (1000 / PageHandler.timer.getDelay());
     }
 
     public static void EndGame(){

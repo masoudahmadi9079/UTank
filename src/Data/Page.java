@@ -10,7 +10,7 @@ public class Page extends JFrame {
     List<Thing> everyThing = new ArrayList<>();
 
     Page(){
-        this.setSize(Game.WIDTH, Game.HEIGHT);
+        this.setSize(Page.WIDTH, Page.HEIGHT);
     }
 
     void updateState(){

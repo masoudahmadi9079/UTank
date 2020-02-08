@@ -19,7 +19,7 @@ public class Player {
     }
 
     // add a new tank
-    Tank newTank() {
+    public Tank newTank() {
         this.respawn();
         return this.tank;
     }

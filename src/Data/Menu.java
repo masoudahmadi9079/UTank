@@ -4,15 +4,16 @@ import java.awt.*;
 
 public class Menu extends Page {
 
-    Menu(){
-        //this.everyThing.add(new Tank(300, 200, 0));
-    }
+    Menu(){ }
 
     void updateState(){
         super.updateState();
         MenuActionListener listener = (MenuActionListener) this.getKeyListeners()[0];
         if (listener.key1) {
             PageHandler.changePage("game");
+        }
+        if (listener.key2) {
+            PageHandler.changePage("settings");
         }
         if (listener.escape) {
             PageHandler.EndGame();

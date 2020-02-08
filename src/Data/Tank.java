@@ -6,6 +6,8 @@ public class Tank extends MovingThing {
     public final static int RADIUS = 20;
     private final static int GUN_LENGTH = 25;
 
+    //private int shots;
+
     Tank(int x, int y, double direction) {
         super(x, y, direction, 3f, 0.08f);
     }
