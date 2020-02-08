@@ -16,6 +16,12 @@ public class Menu extends Page {
             listener.downReleased = false;
             option = (option+1) % 3;
         }
+        if (listener.keyUp && listener.upReleased) {
+            listener.upReleased = false;
+            option--;
+            if (option == -1)
+                option = 2;
+        }
         if (listener.keyEnter && listener.enterReleased) {
             listener.enterReleased = false;
             switch (option){

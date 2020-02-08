@@ -5,9 +5,8 @@ import java.awt.event.KeyEvent;
 
 public class MenuActionListener extends KeyAdapter {
 
-    public boolean enterReleased = true, downReleased = true;
-    boolean keyEnter, keyDown,
-            escape;
+    public boolean enterReleased = true, downReleased = true, upReleased = true;
+    boolean keyEnter, keyDown, keyUp, escape;
 
     public void keyPressed(KeyEvent event) {
         switch (event.getKeyCode()) {
@@ -16,6 +15,9 @@ public class MenuActionListener extends KeyAdapter {
                 break;
             case KeyEvent.VK_DOWN:
                 keyDown = true;
+                break;
+            case KeyEvent.VK_UP:
+                keyUp = true;
                 break;
             case KeyEvent.VK_ESCAPE:
                 escape = true;
@@ -32,6 +34,10 @@ public class MenuActionListener extends KeyAdapter {
             case KeyEvent.VK_DOWN:
                 keyDown = false;
                 downReleased = true;
+                break;
+            case KeyEvent.VK_UP:
+                keyUp = false;
+                upReleased = true;
                 break;
             case KeyEvent.VK_ESCAPE:
                 escape = false;

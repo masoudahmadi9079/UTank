@@ -18,6 +18,12 @@ public class Binds extends Page {
                 listener.downReleased = false;
                 option = (option+1) % 9;
             }
+            if (listener.keyUp && listener.upReleased) {
+                listener.upReleased = false;
+                option--;
+                if (option == -1)
+                    option = 8;
+            }
             if (listener.keyEnter && listener.enterReleased) {
                 listener.enterReleased = false;
                 if (option != 8){
