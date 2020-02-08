@@ -18,8 +18,7 @@ public class Settings extends Page {
     }
 
     void updateState(){
-        super.updateState();
-        SettingsActionListener listener = (SettingsActionListener) this.getKeyListeners()[0];
+        MenuActionListener listener = (MenuActionListener) this.getKeyListeners()[0];
         if (listener.escape) {
             Util.bulletsCount = options[0][optionsIndex[0]];
             Util.pointsToWin = options[1][optionsIndex[1]];
@@ -30,8 +29,8 @@ public class Settings extends Page {
             listener.downReleased = false;
             option = (option+1) % 3;
         }
-        if (listener.keyRight && listener.rightReleased) {
-            listener.rightReleased = false;
+        if (listener.keyEnter && listener.enterReleased) {
+            listener.enterReleased = false;
             optionsIndex[option]++;
             optionsIndex[option] %= 3;
         }
@@ -47,12 +46,11 @@ public class Settings extends Page {
         graphics.fillRect(100,280, 400, 60);
         graphics.setColor(Color.BLACK);
         graphics.fillRect(150,360, 300, 120);
-        graphics.setColor(Color.PINK);
-        graphics.fillRect(100,option*80 + 120, 400, 60);
         graphics.setColor(Color.WHITE);
-        graphics.drawString("Number of bullets in each round: " + options[0][optionsIndex[0]] , 150, 150);
-        graphics.drawString("Number of required point to win: " + options[1][optionsIndex[1]] , 150, 230);
-        graphics.drawString("Rendering frames per second: " + options[2][optionsIndex[2]] , 150, 310);
+        graphics.fillRect(85,option*80 + 135, 30, 30);
+        graphics.drawString("Number of bullets in each round: " + options[0][optionsIndex[0]] , 200, 150);
+        graphics.drawString("Number of required point to win: " + options[1][optionsIndex[1]] , 200, 230);
+        graphics.drawString("Rendering frames per second: " + options[2][optionsIndex[2]] , 200, 310);
 
         // todo : add instructions
     }

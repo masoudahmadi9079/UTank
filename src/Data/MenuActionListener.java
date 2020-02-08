@@ -4,19 +4,18 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class MenuActionListener extends KeyAdapter {
-    boolean key1, key2, key3,
+
+    public boolean enterReleased = true, downReleased = true;
+    boolean keyEnter, keyDown,
             escape;
 
     public void keyPressed(KeyEvent event) {
         switch (event.getKeyCode()) {
-            case KeyEvent.VK_P:
-                key1 = true;
+            case KeyEvent.VK_ENTER:
+                keyEnter = true;
                 break;
-            case KeyEvent.VK_S:
-                key2 = true;
-                break;
-            case KeyEvent.VK_B:
-                key3 = true;
+            case KeyEvent.VK_DOWN:
+                keyDown = true;
                 break;
             case KeyEvent.VK_ESCAPE:
                 escape = true;
@@ -26,14 +25,13 @@ public class MenuActionListener extends KeyAdapter {
     }
     public void keyReleased(KeyEvent event) {
         switch (event.getKeyCode()) {
-            case KeyEvent.VK_P:
-                key1 = false;
+            case KeyEvent.VK_ENTER:
+                keyEnter = false;
+                enterReleased = true;
                 break;
-            case KeyEvent.VK_S:
-                key2 = false;
-                break;
-            case KeyEvent.VK_B:
-                key3 = false;
+            case KeyEvent.VK_DOWN:
+                keyDown = false;
+                downReleased = true;
                 break;
             case KeyEvent.VK_ESCAPE:
                 escape = false;

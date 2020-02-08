@@ -9,65 +9,47 @@ public class GameActionListener extends KeyAdapter {
             escape;
 
     public void keyPressed(KeyEvent event) {
-        switch (event.getKeyCode()) {
-            case KeyEvent.VK_LEFT:
-                this.p1Left = true;
-                break;
-            case KeyEvent.VK_RIGHT:
-                this.p1Right = true;
-                break;
-            case KeyEvent.VK_UP:
-                this.p1Move = true;
-                break;
-            case KeyEvent.VK_ENTER:
-                this.p1Fire = true;
-                break;
-            case KeyEvent.VK_A:
-                this.p2Left = true;
-                break;
-            case KeyEvent.VK_D:
-                this.p2Right = true;
-                break;
-            case KeyEvent.VK_W:
-                this.p2Move = true;
-                break;
-            case KeyEvent.VK_SPACE:
-                this.p2Fire = true;
-                break;
-            case KeyEvent.VK_ESCAPE:
-                this.escape = true;
+        if (event.getKeyCode() == Util.currentBinds[0]) {
+            this.p1Left = true;
+        }else if(event.getKeyCode() == Util.currentBinds[1]) {
+            this.p1Right = true;
+        }else if(event.getKeyCode() == Util.currentBinds[2]) {
+            this.p1Move = true;
+        }else if(event.getKeyCode() == Util.currentBinds[3]) {
+            this.p1Fire = true;
+        }else if(event.getKeyCode() == Util.currentBinds[4]) {
+            this.p2Left = true;
+        }else if(event.getKeyCode() == Util.currentBinds[5]) {
+            this.p2Right = true;
+        }else if(event.getKeyCode() == Util.currentBinds[6]) {
+            this.p2Move = true;
+        }else if(event.getKeyCode() == Util.currentBinds[7]) {
+            this.p2Fire = true;
+        }else if(event.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            this.escape = true;
         }
         event.consume();
     }
 
     public void keyReleased(KeyEvent event) {
-        switch (event.getKeyCode()) {
-            case KeyEvent.VK_LEFT:
-                this.p1Left = false;
-                break;
-            case KeyEvent.VK_RIGHT:
-                this.p1Right = false;
-                break;
-            case KeyEvent.VK_UP:
-                this.p1Move = false;
-                break;
-            case KeyEvent.VK_ENTER:
-                this.p1Fire = false;
-                break;
-            case KeyEvent.VK_A:
-                this.p2Left = false;
-                break;
-            case KeyEvent.VK_D:
-                this.p2Right = false;
-                break;
-            case KeyEvent.VK_W:
-                this.p2Move = false;
-                break;
-            case KeyEvent.VK_SPACE:
-                this.p2Fire = false;
-                break;
-            case KeyEvent.VK_ESCAPE:
-                this.escape = false;
+        if (event.getKeyCode() == Util.currentBinds[0]) {
+            this.p1Left = false;
+        }else if(event.getKeyCode() == Util.currentBinds[1]) {
+            this.p1Right = false;
+        }else if(event.getKeyCode() == Util.currentBinds[2]) {
+            this.p1Move = false;
+        }else if(event.getKeyCode() == Util.currentBinds[3]) {
+            this.p1Fire = false;
+        }else if(event.getKeyCode() == Util.currentBinds[4]) {
+            this.p2Left = false;
+        }else if(event.getKeyCode() == Util.currentBinds[5]) {
+            this.p2Right = false;
+        }else if(event.getKeyCode() == Util.currentBinds[6]) {
+            this.p2Move = false;
+        }else if(event.getKeyCode() == Util.currentBinds[7]) {
+            this.p2Fire = false;
+        }else if(event.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            this.escape = false;
         }
         event.consume();
     }

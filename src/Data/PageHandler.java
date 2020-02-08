@@ -1,7 +1,6 @@
 package Data;
 
 import javax.swing.*;
-import java.awt.event.KeyAdapter;
 
 public class PageHandler {
 
@@ -41,7 +40,11 @@ public class PageHandler {
                 break;
             case "settings":
                 currentPage = new Settings();
-                currentPage.addKeyListener(new SettingsActionListener());
+                currentPage.addKeyListener(new MenuActionListener());
+                break;
+            case "binds":
+                currentPage = new Binds();
+                currentPage.addKeyListener(new BindsActionListener());
                 break;
         }
         currentPage.setUndecorated(true);
