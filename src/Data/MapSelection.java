@@ -2,19 +2,20 @@ package Data;
 
 import java.awt.*;
 
-public class Menu extends Page {
+public class MapSelection extends Page {
     private int option = 0;
 
-    Menu(){ }
+    MapSelection() {
+    }
 
-    void updateState(){
+    void updateState() {
         MenuActionListener listener = (MenuActionListener) this.getKeyListeners()[0];
         if (listener.escape) {
-            PageHandler.EndGame();
+            PageHandler.changePage("menu");
         }
         if (listener.keyDown && listener.downReleased) {
             listener.downReleased = false;
-            option = (option+1) % 3;
+            option = (option + 1) % 3;
         }
         if (listener.keyUp && listener.upReleased) {
             listener.upReleased = false;
@@ -24,20 +25,10 @@ public class Menu extends Page {
         }
         if (listener.keyEnter && listener.enterReleased) {
             listener.enterReleased = false;
-            switch (option){
-                case 0:
-                    PageHandler.changePage("maps");
-                    break;
-                case 1:
-                    PageHandler.changePage("settings");
-                    break;
-                case 2:
-                    PageHandler.changePage("binds");
-                    break;
-            }
+            Util.currentMap = option;
+            PageHandler.changePage("game");
         }
     }
-
     public void paint(Graphics graphics) {
         super.paint(graphics);
         graphics.setColor(Color.LIGHT_GRAY);
@@ -50,9 +41,9 @@ public class Menu extends Page {
         graphics.fillRect(200,410, 200, 80);
         graphics.setColor(Color.WHITE);
         graphics.fillRect(180,option*100 + 230, 40, 40);
-        graphics.drawString("TANKS SHOWDOWN (MULTI PLAYER)", 190, 140);
-        graphics.drawString("PLAY THE GAME", 240, 250);
-        graphics.drawString("GAME SETTINGS", 240, 350);
-        graphics.drawString("KEYBOARD BINDS", 240, 450);
+        graphics.drawString("Choose a map please:", 190, 140);
+        graphics.drawString("DOWNHILL RIVER", 240, 250);
+        graphics.drawString("SKI MOUNTAIN", 240, 350);
+        graphics.drawString("CROSSFIRE", 240, 450);
     }
 }

@@ -8,8 +8,6 @@ public class Shot extends MovingThing{
 
     private int age = Shot.LIFE;
 
-    // todo: let the shots from a particular tank don't kill the tank itself
-
     Shot(int x, int y, double direction) {
         super(x, y, direction, 6 , 0);
     }

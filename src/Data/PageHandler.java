@@ -46,6 +46,9 @@ public class PageHandler {
                 currentPage = new Binds();
                 currentPage.addKeyListener(new BindsActionListener());
                 break;
+            case "maps":
+                currentPage = new MapSelection();
+                currentPage.addKeyListener(new MenuActionListener());
         }
         currentPage.setUndecorated(true);
         currentPage.setVisible(true);

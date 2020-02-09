@@ -5,7 +5,7 @@ import java.awt.*;
 public class Settings extends Page {
     private int option = 0;
     private int optionsIndex[] = {0, 0, 0};
-    private int[] options[] = {
+    private int[][] options = {
             {5, 7, 9},
             {10, 15, 20},
             {50, 66, 100} };

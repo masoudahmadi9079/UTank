@@ -19,6 +19,29 @@ public class Util {
     };
     public static int[] currentBinds = BINDS.clone();
 
+    public final static int[][][] MAPS = {{
+            { 20, 20, Page.HEIGHT - 40, 1},
+            { 20, 20, Page.WIDTH - 40 , 0},
+            { 20, Page.HEIGHT - 20, Page.WIDTH - 40, 0},
+            { Page.WIDTH - 20, 20, Page.HEIGHT - 40, 1},
+            { Page.WIDTH / 2, Page.HEIGHT/5 , Page.HEIGHT/5, 1},
+            { Page.WIDTH / 2, Page.HEIGHT/5*3 , Page.HEIGHT/5, 1},
+    },{
+            { 20, 20, Page.HEIGHT - 40, 1},
+            { 20, 20, Page.WIDTH - 40 , 0},
+            { 20, Page.HEIGHT - 20, Page.WIDTH - 40, 0},
+            { Page.WIDTH - 20, 20, Page.HEIGHT - 40, 1},
+            { Page.WIDTH / 2, Page.HEIGHT/5 , Page.HEIGHT/5, 1},
+    },{
+            { 20, 20, Page.HEIGHT - 40, 1},
+            { 20, 20, Page.WIDTH - 40 , 0},
+            { 20, Page.HEIGHT - 20, Page.WIDTH - 40, 0},
+            { Page.WIDTH - 20, 20, Page.HEIGHT - 40, 1},
+            { Page.WIDTH / 2, Page.HEIGHT/5*3 , Page.HEIGHT/5, 1},
+    }};
+
+    public static int currentMap = 0;
+
     private Util() {}
 
     public static int findIndex(int arr[], int t)

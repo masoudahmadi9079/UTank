@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game extends Page {
-    final static int OFFSET = 20;
-
     List<Wall> walls = new ArrayList<>();
     Player player1 = new Player();
     Player player2 = new Player();
@@ -20,35 +18,48 @@ public class Game extends Page {
         scores = new JLabel("Welcome!");
         this.add(scores, BorderLayout.NORTH);
 
-        Wall leftEdge = new Wall(Game.OFFSET, Game.OFFSET, Page.HEIGHT - (Game.OFFSET*2), true);
-        Wall topEdge = new Wall(Game.OFFSET, Game.OFFSET, Page.WIDTH - (Game.OFFSET*2), false);
-        Wall bottomEdge = new Wall(Game.OFFSET, Page.HEIGHT - Game.OFFSET, Page.WIDTH - (Game.OFFSET*2), false);
-        Wall rightEdge = new Wall(Page.WIDTH - Game.OFFSET, Game.OFFSET, Page.HEIGHT - (Game.OFFSET*2), true);
-        Wall centerTop = new Wall(Page.WIDTH / 2, Page.HEIGHT/5 , Page.HEIGHT/5, true);
-        Wall centerBottom = new Wall(Page.WIDTH / 2, Page.HEIGHT/5*3 , Page.HEIGHT/5, true);
-        addWall(leftEdge);
-        addWall(topEdge);
-        addWall(bottomEdge);
-        addWall(rightEdge);
-        addWall(centerTop);
-        addWall(centerBottom);
+        // wall generator
+        boolean isVertical;
+        for (int i = 0; i < Util.MAPS[Util.currentMap].length; i++){
+            if (Util.MAPS[Util.currentMap][i][3] == 1)
+                isVertical = true;
+            else
+                isVertical = false;
+            addWall( new Wall( Util.MAPS[Util.currentMap][i][0], Util.MAPS[Util.currentMap][i][1], Util.MAPS[Util.currentMap][i][2], isVertical));
+        }
 
-        p1Tank = player1.newTank();
-        p2Tank = player2.newTank();
+        p1Tank = player1.newTank(Color.BLUE);
+        p2Tank = player2.newTank(Color.RED);
 
         this.everyThing.add(p1Tank);
         this.everyThing.add(p2Tank);
     }
 
     private void updateScore(){
-        scores.setText("Player1 => " + player1.getPoints() + " *** Player2 => " + player2.getPoints());
-        //JOptionPane.showMessageDialog(this, "Eggs are not supposed to be green.");
-        // todo: make the players win the game and show popup
+        // todo: change this line and make it's graphic better
+        scores.setText("Blue => " + player1.getPoints() + " ---- Red => " + player2.getPoints());
+        if (player1.getPoints() >= Util.pointsToWin) {
+            JOptionPane.showMessageDialog(this, "Blue won the game");
+            PageHandler.changePage("menu");
+        }else if(player2.getPoints() >= Util.pointsToWin) {
+            JOptionPane.showMessageDialog(this, "Red won the game");
+            PageHandler.changePage("menu");
+        }
     }
 
     private void addWall(Wall wall){
         this.everyThing.add(wall);
         this.walls.add(wall);
+    }
+
+    private void resetRound(){
+        this.everyThing.remove(p1Tank);
+        p1Tank = player1.newTank(Color.BLUE);
+        this.everyThing.add(p1Tank);
+        this.everyThing.remove(p2Tank);
+        p2Tank = player2.newTank(Color.RED);
+        this.everyThing.add(p2Tank);
+        shotsInTheAir = new ArrayList<>();
     }
 
     void updateState() {
@@ -64,22 +75,26 @@ public class Game extends Page {
             // shots and players contacts
             if (p1Tank.isShot(shot)) {
                 player2.addPoint();
-                this.everyThing.remove(p1Tank);
-                p1Tank = player1.newTank();
-                this.everyThing.add(p1Tank);
                 updateScore();
+                resetRound();
+                JOptionPane.showMessageDialog(this, "Red got this one!");
             }
             if (p2Tank.isShot(shot)) {
                 player1.addPoint();
-                this.everyThing.remove(p2Tank);
-                p2Tank = player2.newTank();
-                this.everyThing.add(p2Tank);
                 updateScore();
+                resetRound();
+                JOptionPane.showMessageDialog(this, "Blue got this one!");
             }
         }
 
         this.shotsInTheAir.forEach(Shot::growOld);
         this.shotsInTheAir.removeIf(Shot::isDead);
+
+        // score check
+        if (player1.getShots() <= 0 && player2.getShots() <= 0){
+            JOptionPane.showMessageDialog(this, "That's a Tie!");
+            resetRound();
+        }
 
         GameActionListener listener = (GameActionListener) this.getKeyListeners()[0];
 
@@ -124,7 +139,10 @@ public class Game extends Page {
             p1Tank.turnRight();
         }
         if (listener.p1Fire) {
-            this.shotsInTheAir.add(new Shot(p1Tank.getGunX(), p1Tank.getGunY(), p1Tank.getDirection()));
+            player1.oneLessShot();
+            if (player1.getShots() > 0){
+                this.shotsInTheAir.add(new Shot(p1Tank.getGunX(), p1Tank.getGunY(), p1Tank.getDirection()));
+            }
             listener.p1Fire = false;
         }
         if (listener.p2Left) {
@@ -134,7 +152,10 @@ public class Game extends Page {
             p2Tank.turnRight();
         }
         if (listener.p2Fire) {
-            this.shotsInTheAir.add(new Shot(p2Tank.getGunX(), p2Tank.getGunY(), p2Tank.getDirection()));
+            player2.oneLessShot();
+            if (player2.getShots() > 0) {
+                this.shotsInTheAir.add(new Shot(p2Tank.getGunX(), p2Tank.getGunY(), p2Tank.getDirection()));
+            }
             listener.p2Fire = false;
         }
         if (listener.escape) {

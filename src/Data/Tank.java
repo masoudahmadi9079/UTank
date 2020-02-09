@@ -5,14 +5,17 @@ import java.awt.*;
 public class Tank extends MovingThing {
     public final static int RADIUS = 20;
     private final static int GUN_LENGTH = 25;
+    private Color color;
 
     //private int shots;
 
-    Tank(int x, int y, double direction) {
+    Tank(int x, int y, double direction, Color color) {
         super(x, y, direction, 3f, 0.08f);
+        this.color = color;
     }
 
     public void draw(Graphics graphics) {
+        graphics.setColor(this.color);
         graphics.drawOval(
                 this.x - Tank.RADIUS,
                 this.y - Tank.RADIUS,
