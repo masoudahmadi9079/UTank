@@ -58,6 +58,7 @@ public class Settings extends Page {
         graphics.drawString("Number of required point to win: " + options[1][optionsIndex[1]] , 200, 230);
         graphics.drawString("Rendering frames per second: " + options[2][optionsIndex[2]] , 200, 310);
 
-        // todo : add instructions
+        graphics.drawString("Use up and down arrows to navigate" , 200, 400);
+        graphics.drawString("Enter to select and Esc to exit" , 200, 440);
     }
 }

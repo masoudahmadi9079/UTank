@@ -38,13 +38,8 @@ public class Game extends Page {
     private void updateScore(){
         // todo: change this line and make it's graphic better
         scores.setText("Blue => " + player1.getPoints() + " ---- Red => " + player2.getPoints());
-        if (player1.getPoints() >= Util.pointsToWin) {
-            JOptionPane.showMessageDialog(this, "Blue won the game");
+        if (player1.getPoints() >= Util.pointsToWin || player2.getPoints() >= Util.pointsToWin)
             PageHandler.changePage("menu");
-        }else if(player2.getPoints() >= Util.pointsToWin) {
-            JOptionPane.showMessageDialog(this, "Red won the game");
-            PageHandler.changePage("menu");
-        }
     }
 
     private void addWall(Wall wall){
