@@ -33,21 +33,15 @@ public class Wall extends Thing {
     }
 
     boolean contacts(MovingThing moving) {
-
         // rewrite the contact system from scratch
 
         int radius = moving.getRadius();
         if (isVertical){
-            if ((moving.getX() + radius >= this.x && moving.getX() - radius <= this.x + Wall.WIDTH) &&
-                    (moving.getY() + radius >= this.y && moving.getY() - radius <= this.y + +size)){
-                return true;
-            }
+            return (moving.getX() + radius >= this.x && moving.getX() - radius <= this.x + Wall.WIDTH) &&
+                    (moving.getY() + radius >= this.y && moving.getY() - radius <= this.y + size);
         }else{
-            if ((moving.getX() + radius >= this.x && moving.getX() - radius <= this.x + size) &&
-                    (moving.getY() + radius >= this.y && moving.getY() - radius <= this.y + Wall.WIDTH)){
-                return true;
-            }
+            return (moving.getX() + radius >= this.x && moving.getX() - radius <= this.x + size) &&
+                    (moving.getY() + radius >= this.y && moving.getY() - radius <= this.y + Wall.WIDTH);
         }
-        return false;
     }
 }

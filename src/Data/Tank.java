@@ -3,7 +3,7 @@ package Data;
 import java.awt.*;
 
 public class Tank extends MovingThing {
-    public final static int RADIUS = 20;
+    final static int RADIUS = 20;
     private final static int GUN_LENGTH = 25;
     private Color color;
 

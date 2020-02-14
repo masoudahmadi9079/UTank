@@ -5,6 +5,7 @@ public abstract class MovingThing extends Thing {
     float velocity;
     float angularVelocity;
 
+
     MovingThing(int x, int y, double direction, float velocity, float angularVelocity) {
         super(x, y);
         this.direction = direction;

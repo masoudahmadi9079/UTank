@@ -7,7 +7,7 @@ public class PageHandler {
     private static Page currentPage;
     private static Timer timer;
 
-    private PageHandler(){};
+    private PageHandler(){}
 
     public static void SetupPageHandler(){
         currentPage = new Menu();

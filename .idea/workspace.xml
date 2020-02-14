@@ -2,24 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc6d9475-5967-4ed8-a70d-4ad441b1b160" name="Default Changelist" comment="changed the whole wall and contact system">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exit" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Game.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/GameActionListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/MovingThing.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Player.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Shot.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Tank.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Thing.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/UTank/Data/Wall.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/GameActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/GameActionListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Shot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Shot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/MovingThing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/MovingThing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/Shot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/Shot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/Tank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/Tank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/Thing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/Thing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UTank/Data/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UTank/Data/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/MovingThing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/MovingThing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/PageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/PageHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Tank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Wall.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,10 +41,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="goo99p" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="UTank" />
+  </component>
   <component name="ProjectId" id="1WtkbqQavdrJpS0cJphHgdWYjrr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -183,5 +187,19 @@
     <MESSAGE value="fixed the bounce against the wall system" />
     <MESSAGE value="a little fix on step functionality" />
     <option name="LAST_COMMIT_MESSAGE" value="a little fix on step functionality" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Data/MenuActionListener.java</url>
+          <line>10</line>
+          <properties class="Data.MenuActionListener" method="keyPressed">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
