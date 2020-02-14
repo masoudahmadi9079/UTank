@@ -46,4 +46,8 @@ public class Tank extends MovingThing {
     int getGunY() {
         return (int) Math.round(this.y + (Tank.GUN_LENGTH * Math.sin(this.direction)));
     }
+
+    boolean isMine(Mine mine) {
+        return (mine.x < this.x + RADIUS && mine.x > this.x - RADIUS) && (mine.y < this.y + RADIUS && mine.y > this.y - RADIUS);
+    }
 }

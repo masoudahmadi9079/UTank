@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Game extends Page {
+    private static final int REFRESH_MINE_TIME = 200;
     List<Wall> walls = new ArrayList<>();
     Player player1 = new Player();
     Player player2 = new Player();
@@ -13,6 +15,9 @@ public class Game extends Page {
     Tank p1Tank;
     Tank p2Tank;
     JLabel scores;
+    ConcurrentLinkedQueue<Mine> mines = new ConcurrentLinkedQueue<>();
+    int mineTime = 0;
+
 
     Game() {
         scores = new JLabel("Welcome!");
@@ -30,9 +35,10 @@ public class Game extends Page {
 
         p1Tank = player1.newTank(Color.BLUE);
         p2Tank = player2.newTank(Color.RED);
-
         this.everyThing.add(p1Tank);
         this.everyThing.add(p2Tank);
+
+        createMines(mines, everyThing);
     }
 
     private void updateScore(){
@@ -57,7 +63,30 @@ public class Game extends Page {
         shotsInTheAir = new ArrayList<>();
     }
 
+    private void scoreFor(String name){
+        switch (name){
+            case "red":
+                player2.addPoint();
+                JOptionPane.showMessageDialog(this, "Red got this one!");
+                break;
+            case "blue":
+                player1.addPoint();
+                JOptionPane.showMessageDialog(this, "Blue got this one!");
+                break;
+            case "noOne":
+                JOptionPane.showMessageDialog(this, "That's a Tie!");
+                break;
+        }
+        updateScore();
+        resetRound();
+    }
+
     void updateState() {
+        mineTime++;
+        if (mineTime == REFRESH_MINE_TIME) {
+            createMines(mines, everyThing);
+            mineTime = 0;
+        }
         // shots and walls contacts
         for (Shot shot : this.shotsInTheAir) {
             for (Wall wall : this.walls) {
@@ -69,26 +98,29 @@ public class Game extends Page {
 
             // shots and players contacts
             if (p1Tank.isShot(shot)) {
-                player2.addPoint();
-                updateScore();
-                resetRound();
-                JOptionPane.showMessageDialog(this, "Red got this one!");
+                scoreFor("red");
             }
             if (p2Tank.isShot(shot)) {
-                player1.addPoint();
-                updateScore();
-                resetRound();
-                JOptionPane.showMessageDialog(this, "Blue got this one!");
+                scoreFor("blue");
             }
         }
+
+        for (Mine mine : mines) {
+            if (p1Tank.isMine(mine)) {
+                scoreFor("red");
+            }
+            if (p2Tank.isMine(mine)) {
+                scoreFor("blue");
+            }
+        }
+
 
         this.shotsInTheAir.forEach(Shot::growOld);
         this.shotsInTheAir.removeIf(Shot::isDead);
 
         // score check
         if (player1.getShots() <= 0 && player2.getShots() <= 0){
-            JOptionPane.showMessageDialog(this, "That's a Tie!");
-            resetRound();
+            scoreFor("noOne");
         }
 
         GameActionListener listener = (GameActionListener) this.getKeyListeners()[0];
@@ -163,4 +195,36 @@ public class Game extends Page {
         this.shotsInTheAir.forEach(s -> s.draw(graphics));
         Toolkit.getDefaultToolkit().sync();
     }
+
+    private void createMines(ConcurrentLinkedQueue<Mine> mines, ConcurrentLinkedQueue<Thing> everything) {
+        //remove previous mines
+        for (Mine mine : mines) {
+            mines.remove(mine);
+            everything.remove(mine);
+        }
+
+        //create new mines
+        Mine mine1 = new Mine((int) ((Math.random() * (Page.WIDTH - ((50 + Tank.RADIUS) *2) - 10)) + 50 + Tank.RADIUS + 5),
+                (int) ((Math.random() * (Page.WIDTH - ((50 + Tank.RADIUS) *2) - 10)) + 50 + Tank.RADIUS + 5)
+        );
+        Mine mine2 = new Mine((int) ((Math.random() * (Page.WIDTH - ((50 + Tank.RADIUS) *2) - 10)) + 50 + Tank.RADIUS + 5),
+                (int) ((Math.random() * (Page.WIDTH - ((50 + Tank.RADIUS) *2) - 10)) + 50 + Tank.RADIUS + 5)
+        );
+        Mine mine3 = new Mine((int) ((Math.random() * (Page.WIDTH - ((50 + Tank.RADIUS) *2) - 10)) + 50 + Tank.RADIUS + 5),
+                (int) ((Math.random() * (Page.WIDTH - ((50 + Tank.RADIUS) *2) - 10)) + 50 + Tank.RADIUS + 5)
+        );
+        Mine mine4 = new Mine((int) ((Math.random() * (Page.WIDTH - ((50 + Tank.RADIUS) *2) - 10)) + 50 + Tank.RADIUS + 5),
+                (int) ((Math.random() * (Page.WIDTH - ((50 + Tank.RADIUS) *2) - 10)) + 50 + Tank.RADIUS + 5)
+        );
+
+        mines.add(mine1);
+        mines.add(mine2);
+        mines.add(mine3);
+        mines.add(mine4);
+        everything.add(mine1);
+        everything.add(mine2);
+        everything.add(mine3);
+        everything.add(mine4);
+    }
 }
+
